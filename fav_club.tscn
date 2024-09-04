@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqnt645axldo"]
+
+[ext_resource type="Script" path="res://fav_club.gd" id="1_2itoc"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_evhmy"]
+
+[node name="FavClub" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2itoc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 126.0
+offset_right = 840.0
+offset_bottom = 438.0
+theme = ExtResource("2_evhmy")
+text = "My favorite club is ..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnshow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 440.0
+offset_right = 266.0
+offset_bottom = 565.0
+theme = ExtResource("2_evhmy")
+text = "show"
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 437.0
+offset_right = 636.0
+offset_bottom = 583.0
+theme = ExtResource("2_evhmy")
+text = "clear"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 812.0
+offset_top = 435.0
+offset_right = 969.0
+offset_bottom = 581.0
+theme = ExtResource("2_evhmy")
+text = "exit"
+
+[connection signal="pressed" from="btnshow" to="." method="_on_btnshow_pressed"]
+[connection signal="pressed" from="btnclear" to="." method="_on_btnclear_pressed"]
+[connection signal="pressed" from="btnexit" to="." method="_on_btnexit_pressed"]
