@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx4k3wm8besep"]
+
+[ext_resource type="Script" path="res://custom.gd" id="1_gh51l"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_q3vim"]
+
+[node name="custom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gh51l")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 2.0
+offset_right = 901.0
+offset_bottom = 389.0
+theme = ExtResource("2_q3vim")
+text = "Click any button"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 228.0
+offset_bottom = 201.0
+theme = ExtResource("2_q3vim")
+text = "Click
+"
+
+[node name="btn_2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 204.0
+offset_right = 225.0
+offset_bottom = 405.0
+theme = ExtResource("2_q3vim")
+text = "Click
+"
+
+[node name="btn_work" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 403.0
+offset_right = 228.0
+offset_bottom = 604.0
+theme = ExtResource("2_q3vim")
+text = "Click
+"
+
+[node name="btn_4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 458.0
+offset_right = 450.0
+offset_bottom = 659.0
+theme = ExtResource("2_q3vim")
+text = "Click
+"
+
+[node name="btn5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 463.0
+offset_right = 672.0
+offset_bottom = 664.0
+theme = ExtResource("2_q3vim")
+text = "Click
+"
+
+[connection signal="pressed" from="btn_1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="btn_1" to="." method="_on_btn_1_pressed"]
+[connection signal="pressed" from="btn_2" to="." method="_on_btn_2_pressed"]
+[connection signal="pressed" from="btn_work" to="." method="_on_btn_work_pressed"]
