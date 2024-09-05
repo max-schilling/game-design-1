@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://nwycvsbvqo77"]
+
+[ext_resource type="Script" path="res://prog52/prog_52a.gd" id="1_i4fgg"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_gqcvm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdl4a"]
+line_spacing = 38.0
+
+[node name="prog52a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4fgg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 23.0
+offset_right = 544.0
+offset_bottom = 81.0
+theme = ExtResource("2_gqcvm")
+text = "Length:"
+label_settings = SubResource("LabelSettings_jdl4a")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 103.0
+offset_right = 553.0
+offset_bottom = 159.0
+text = "width:"
+label_settings = SubResource("LabelSettings_jdl4a")
+
+[node name="lblArea" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 301.0
+offset_right = 1161.0
+offset_bottom = 357.0
+theme = ExtResource("2_gqcvm")
+text = "area:"
+label_settings = SubResource("LabelSettings_jdl4a")
+
+[node name="lblPerim" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 407.0
+offset_right = 1164.0
+offset_bottom = 463.0
+theme = ExtResource("2_gqcvm")
+text = "perimeter:"
+label_settings = SubResource("LabelSettings_jdl4a")
+
+[node name="txtLen" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 26.0
+offset_right = 531.0
+offset_bottom = 73.0
+
+[node name="txtWid" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 105.0
+offset_right = 529.0
+offset_bottom = 152.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 554.0
+offset_right = 116.0
+offset_bottom = 650.0
+theme = ExtResource("2_gqcvm")
+text = "calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 557.0
+offset_right = 572.0
+offset_bottom = 653.0
+theme = ExtResource("2_gqcvm")
+text = "clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 552.0
+offset_right = 1015.0
+offset_bottom = 648.0
+theme = ExtResource("2_gqcvm")
+text = "exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
