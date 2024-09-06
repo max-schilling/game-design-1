@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://h6axg0jyatl7"]
+
+[ext_resource type="Script" path="res://prog_54b.gd" id="1_p0px6"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_fhm8n"]
+
+[node name="prog_54b" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p0px6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 19.0
+offset_right = 929.0
+offset_bottom = 189.0
+theme = ExtResource("2_fhm8n")
+text = "INPUT 4 NUMBERS"
+horizontal_alignment = 1
+
+[node name="lblAver" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 352.0
+offset_right = 379.0
+offset_bottom = 447.0
+theme = ExtResource("2_fhm8n")
+text = "Average:"
+
+[node name="lblSum" type="Label" parent="."]
+layout_mode = 0
+offset_top = 485.0
+offset_right = 381.0
+offset_bottom = 580.0
+theme = ExtResource("2_fhm8n")
+text = "Sum:"
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 547.0
+offset_right = 155.0
+offset_bottom = 648.0
+theme = ExtResource("2_fhm8n")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 549.0
+offset_right = 525.0
+offset_bottom = 650.0
+theme = ExtResource("2_fhm8n")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 543.0
+offset_right = 1154.0
+offset_bottom = 648.0
+theme = ExtResource("2_fhm8n")
+text = "Exit"
+
+[node name="NumImp1" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 110.0
+offset_right = 166.0
+offset_bottom = 197.0
+
+[node name="NumImp2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 112.0
+offset_right = 476.0
+offset_bottom = 199.0
+
+[node name="NumImp3" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 110.0
+offset_right = 784.0
+offset_bottom = 197.0
+
+[node name="NumImp4" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 953.0
+offset_top = 117.0
+offset_right = 1094.0
+offset_bottom = 204.0
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
