@@ -60,6 +60,7 @@ offset_left = 431.0
 offset_top = 26.0
 offset_right = 531.0
 offset_bottom = 73.0
+theme = ExtResource("2_gqcvm")
 
 [node name="txtWid" type="LineEdit" parent="."]
 layout_mode = 0
@@ -67,6 +68,7 @@ offset_left = 429.0
 offset_top = 105.0
 offset_right = 529.0
 offset_bottom = 152.0
+theme = ExtResource("2_gqcvm")
 
 [node name="btnCalc" type="Button" parent="."]
 layout_mode = 0
@@ -88,9 +90,9 @@ text = "clear"
 
 [node name="btnExit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 834.0
+offset_left = 922.0
 offset_top = 552.0
-offset_right = 1015.0
+offset_right = 1103.0
 offset_bottom = 648.0
 theme = ExtResource("2_gqcvm")
 text = "exit"
