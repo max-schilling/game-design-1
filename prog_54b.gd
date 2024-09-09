@@ -1,11 +1,11 @@
 extends Control
 
 func _on_btn_calc_pressed() -> void:
-	var num1 = int($txtNumImp1.text)
-	var num2 = int($txtNumImp2.text)
-	var num3 = int($txtNumImp3.text)
-	var num4 = int($txtNumImp4.text)
-	var numSum = num1 + num2 + num3 + num4
+	var numa = int($txtNumImp_1.text)
+	var numb = int($txtNumImp_2.text)
+	var numc = int($txtNumImp_3.text)
+	var numd = int($txtNumImp_4.text)
+	var numSum = numa + numb + numc + numd
 	var numAver = numSum / 4
 	$lblAver.text = "Average: " + str(numAver)
 	$lblSum.text = "Sum: " + str(numSum)
