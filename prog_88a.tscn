@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://cme7b8gbuuebd"]
+
+[ext_resource type="Script" path="res://prog_88a.gd" id="1_if7xm"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_dubls"]
+
+[node name="prog88a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_if7xm")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 111.0
+theme = ExtResource("2_dubls")
+text = "number"
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 3.0
+offset_right = 1156.0
+offset_bottom = 111.0
+theme = ExtResource("2_dubls")
+text = "number"
+
+[node name="bigLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 114.0
+offset_right = 1158.0
+offset_bottom = 521.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 542.0
+offset_right = 167.0
+offset_bottom = 649.0
+theme = ExtResource("2_dubls")
+text = "calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 542.0
+offset_right = 584.0
+offset_bottom = 649.0
+theme = ExtResource("2_dubls")
+text = "clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 983.0
+offset_top = 551.0
+offset_right = 1153.0
+offset_bottom = 658.0
+theme = ExtResource("2_dubls")
+text = "exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
