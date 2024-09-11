@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdkiqimtdayou"]
+
+[ext_resource type="Script" path="res://prog_76a.gd" id="1_osgt3"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_tqoml"]
+
+[node name="prog76a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_osgt3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 138.0
+theme = ExtResource("2_tqoml")
+text = "Enter your least favorite number 1-9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 134.0
+offset_right = 662.0
+offset_bottom = 242.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 114.0
+theme = ExtResource("2_tqoml")
+text = "go"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_top = 515.0
+offset_right = 1159.0
+offset_bottom = 647.0
+theme = ExtResource("2_tqoml")
+text = "mysterious"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
