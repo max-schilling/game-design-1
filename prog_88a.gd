@@ -1,7 +1,5 @@
 extends Control
 
-
-
 func _on_btn_calc_pressed() -> void:
 	var num1 = int($LineEdit.text)
 	var num2 = int($LineEdit2.text)
@@ -31,8 +29,14 @@ func _on_btn_calc_pressed() -> void:
 				"\nMin: " + str(Min)
 
 func _on_btn_clear_pressed() -> void:
-	#do regular clear thingys
-
+	$LineEdit.text = ""
+	$LineEdit2.text = ""
+	$bigLabel.text = "Sum: " + \
+				"\nDifferance: " + \
+				
+				"\nAbs. Differance: " + \
+				"\nMax: " + \
+				"\nMin: " 
 
 func _on_btn_exit_pressed() -> void:
 	get_tree().quit()
