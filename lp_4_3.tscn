@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu1umtnoyhdjd"]
+
+[ext_resource type="Script" path="res://lp_4_3.gd" id="1_iildr"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_wbff4"]
+
+[node name="lp4-3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iildr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 98.0
+offset_right = 398.0
+offset_bottom = 206.0
+theme = ExtResource("2_wbff4")
+text = "Number of eggs"
+
+[node name="lblout" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 229.0
+offset_right = 1149.0
+offset_bottom = 465.0
+theme = ExtResource("2_wbff4")
+text = "yes i am a label"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 98.0
+offset_right = 574.0
+offset_bottom = 172.0
+theme = ExtResource("2_wbff4")
+
+[node name="calc" type="Button" parent="."]
+layout_mode = 0
+offset_top = 461.0
+offset_right = 215.0
+offset_bottom = 648.0
+theme = ExtResource("2_wbff4")
+text = "calculate"
+
+[node name="clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 461.0
+offset_right = 621.0
+offset_bottom = 648.0
+theme = ExtResource("2_wbff4")
+text = "clear"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 466.0
+offset_right = 1155.0
+offset_bottom = 653.0
+theme = ExtResource("2_wbff4")
+text = "exit"
