@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://mg3al4er5e41"]
+
+[ext_resource type="Script" path="res://lp_4_1.gd" id="1_1vfsa"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_tngo5"]
+
+[node name="lp4-1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1vfsa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 750.0
+offset_bottom = 106.0
+theme = ExtResource("2_tngo5")
+text = "enter number of copies to be printed"
+
+[node name="lblout" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 257.0
+offset_right = 1155.0
+offset_bottom = 516.0
+theme = ExtResource("2_tngo5")
+
+[node name="calc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 531.0
+offset_right = 192.0
+offset_bottom = 644.0
+theme = ExtResource("2_tngo5")
+text = "calculate"
+
+[node name="clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 531.0
+offset_right = 627.0
+offset_bottom = 644.0
+theme = ExtResource("2_tngo5")
+text = "clear"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 975.0
+offset_top = 536.0
+offset_right = 1156.0
+offset_bottom = 649.0
+theme = ExtResource("2_tngo5")
+text = "exit"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 718.0
+offset_top = -6.0
+offset_right = 1156.0
+offset_bottom = 93.0
+
+[connection signal="pressed" from="calc" to="." method="_on_calc_pressed"]
+[connection signal="pressed" from="clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
