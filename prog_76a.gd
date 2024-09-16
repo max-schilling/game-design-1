@@ -9,11 +9,9 @@ func _on_button_pressed() -> void:
 	if num3 == 9:
 		$Label2.text = "good"
 		
-	else: num3 > 9
-	$Label2.text = "Uh oh"
+	elif num3 > 9:
+		$Label2.text = "Uh oh"
 		
-	if num3 == 9:
-		$Label2.text = "good" 
 	else: num3 < 9
 	$Label2.text = "uh oh"
 	

@@ -3,7 +3,7 @@ extends Control
 func _on_calc_pressed() -> void:
 	var eggs = int($LineEdit.text)
 	var price = 0.0 # Price per dozen
-	var tcost = 0.0 # Total coast
+	var tcost = 0.0 # Total cost
 	if eggs > 0 and eggs <= 47:
 		price = 0.50
 	elif eggs > 47 and eggs <= 71:
