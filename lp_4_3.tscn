@@ -65,3 +65,7 @@ offset_right = 1155.0
 offset_bottom = 653.0
 theme = ExtResource("2_wbff4")
 text = "exit"
+
+[connection signal="pressed" from="calc" to="." method="_on_calc_pressed"]
+[connection signal="pressed" from="clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

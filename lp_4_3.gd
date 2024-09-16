@@ -4,21 +4,19 @@ func _on_calc_pressed() -> void:
 	var eggs = int($LineEdit.text)
 	var price = 0.0 # Price per dozen
 	var tcost = 0.0 # Total coast
-	if eggs > 0 and eggs <= 99:
-		price = 0.30
-	elif eggs > 99 and eggs <= 499:
-		price = 0.28
-	elif eggs > 499 and eggs <= 749:
-		price = 0.27
-	elif eggs > 749 and eggs <= 1000:
-		price = 0.26
-	elif eggs > 1000:
-		price = 0.25
+	if eggs > 0 and eggs <= 47:
+		price = 0.50
+	elif eggs > 47 and eggs <= 71:
+		price = 0.45
+	elif eggs > 71 and eggs <= 131:
+		price = 0.40
+	elif eggs > 132:
+		price = 0.35
 	else: 
-		$lblout.text = "Invalid number of copies"
+		$lblout.text = "Invalid number of eggs"
 		return
 	tcost = price * eggs
-	$lblout.text = "Price per copy: $" + str(price) + \
+	$lblout.text = "Price per dozen: $" + str(price) + \
 				"\nTotal cost: $%.2f" % tcost
 
 
