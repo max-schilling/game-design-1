@@ -87,7 +87,7 @@ offset_bottom = 648.0
 theme = ExtResource("2_5herr")
 text = "exit"
 
-[connection signal="pressed" from="btncalc" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="btncalc" to="." method="_on_btncalc_pressed"]
+[connection signal="pressed" from="btncalc" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="btnclear" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="btnexit" to="." method="_on_button_3_pressed"]
