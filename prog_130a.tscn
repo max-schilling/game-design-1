@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://l3p4fiamtv62"]
+
+[ext_resource type="Script" path="res://prog_130a.gd" id="1_7vgie"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_8gh8w"]
+
+[node name="prog130a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vgie")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 211.0
+offset_bottom = 102.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = -2.0
+offset_right = 681.0
+offset_bottom = 124.0
+theme = ExtResource("2_8gh8w")
+text = "Input a positive number"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 554.0
+offset_right = 123.0
+offset_bottom = 653.0
+theme = ExtResource("2_8gh8w")
+text = "calculate"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 554.0
+offset_right = 634.0
+offset_bottom = 653.0
+theme = ExtResource("2_8gh8w")
+text = "clear"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 974.0
+offset_top = 554.0
+offset_right = 1155.0
+offset_bottom = 653.0
+theme = ExtResource("2_8gh8w")
+text = "exit"
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 99.0
+offset_right = 1158.0
+offset_bottom = 559.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
