@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://l3p4fiamtv62"]
 
-[ext_resource type="Script" path="res://prog_130a.gd" id="1_7vgie"]
+[ext_resource type="Script" path="res://LangDocs/prog_130a.gd" id="1_bgh6l"]
 [ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_8gh8w"]
 
 [node name="prog_130a" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7vgie")
+script = ExtResource("1_bgh6l")
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 0
