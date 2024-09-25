@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://fv2su53lmp1f"]
+
+[ext_resource type="Script" path="res://prog_52a_func.gd" id="1_g5s0l"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_5v46k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdl4a"]
+line_spacing = 38.0
+
+[node name="prog52aFunc" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g5s0l")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 23.0
+offset_right = 544.0
+offset_bottom = 81.0
+theme = ExtResource("2_5v46k")
+text = "Length:"
+label_settings = SubResource("LabelSettings_jdl4a")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 103.0
+offset_right = 553.0
+offset_bottom = 159.0
+text = "width:"
+label_settings = SubResource("LabelSettings_jdl4a")
+
+[node name="lblArea" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 301.0
+offset_right = 1161.0
+offset_bottom = 459.0
+theme = ExtResource("2_5v46k")
+label_settings = SubResource("LabelSettings_jdl4a")
+
+[node name="txtLen" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 26.0
+offset_right = 531.0
+offset_bottom = 73.0
+theme = ExtResource("2_5v46k")
+
+[node name="txtWid" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 105.0
+offset_right = 529.0
+offset_bottom = 152.0
+theme = ExtResource("2_5v46k")
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 485.0
+offset_right = 272.0
+offset_bottom = 652.0
+theme = ExtResource("2_5v46k")
+text = "calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 479.0
+offset_right = 686.0
+offset_bottom = 646.0
+theme = ExtResource("2_5v46k")
+text = "clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 881.0
+offset_top = 482.0
+offset_right = 1156.0
+offset_bottom = 649.0
+theme = ExtResource("2_5v46k")
+text = "exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
