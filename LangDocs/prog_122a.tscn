@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2wvomtkevfj6"]
+[gd_scene load_steps=2 format=3 uid="uid://d2wvomtkevfj6"]
 
-[ext_resource type="Script" path="res://prog_122a.gd" id="1_ij300"]
 [ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_8sejh"]
 
 [node name="prog122a" type="Control"]
@@ -10,7 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ij300")
 
 [node name="ItemList" type="ItemList" parent="."]
 layout_mode = 0

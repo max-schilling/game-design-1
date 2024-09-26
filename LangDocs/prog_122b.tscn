@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgriesjx0du56"]
+[gd_scene load_steps=3 format=3 uid="uid://cktyhe2snx354"]
 
 [ext_resource type="Script" path="res://prog_122b.gd" id="1_rwhy6"]
 [ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="2_itn1j"]
