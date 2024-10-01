@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckhou86u2f0yt"]
+
+[ext_resource type="Script" path="res://plt_world_1.gd" id="1_eiemv"]
+[ext_resource type="PackedScene" uid="uid://bkk356loekkiy" path="res://plt_player.tscn" id="2_665n0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsiyd"]
+size = Vector2(419.884, 12)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ut102"]
+
+[node name="plt_world1" type="Node2D"]
+script = ExtResource("1_eiemv")
+
+[node name="plt_player" parent="." instance=ExtResource("2_665n0")]
+position = Vector2(1572, 530)
+
+[node name="world" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world"]
+polygon = PackedVector2Array(-10, -1, -251, 363, -200, 629, 178, 649, 697, 622, 1067, 555, 1255, 672, 518, 742, 546, 878, 1695, 997, 1708, 935, 1775, 946, 1786, 881, 1847, 890, 1858, 804, 1907, 813, 1914, 742, 1966, 739, 1977, 521, 2000, 137, 1870, -186, 2119, 69, 1989, 1036, 1276, 1217, -36, 1195, -585, 1240, -642, 171)
+
+[node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
+
+[node name="startplatform" type="StaticBody2D" parent="."]
+position = Vector2(178, 291)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="startplatform"]
+position = Vector2(1394, 395)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_fsiyd")
+
+[node name="Sprite2D" type="Sprite2D" parent="startplatform"]
+position = Vector2(1395.15, 397.041)
+scale = Vector2(420.874, 16.7356)
+texture = SubResource("PlaceholderTexture2D_ut102")
