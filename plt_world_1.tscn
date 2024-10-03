@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckhou86u2f0yt"]
+[gd_scene load_steps=7 format=3 uid="uid://ckhou86u2f0yt"]
 
 [ext_resource type="Script" path="res://plt_world_1.gd" id="1_eiemv"]
 [ext_resource type="PackedScene" uid="uid://bkk356loekkiy" path="res://plt_player.tscn" id="2_665n0"]
+[ext_resource type="PackedScene" uid="uid://brbqxf55g0rhr" path="res://plt_enemy.tscn" id="3_vrmww"]
+[ext_resource type="PackedScene" uid="uid://crknutkb854bs" path="res://interact.tscn" id="4_mhwvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsiyd"]
 size = Vector2(419.884, 12)
@@ -26,10 +28,21 @@ position = Vector2(178, 291)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="startplatform"]
 position = Vector2(1394, 395)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fsiyd")
 
 [node name="Sprite2D" type="Sprite2D" parent="startplatform"]
 position = Vector2(1395.15, 397.041)
 scale = Vector2(420.874, 16.7356)
 texture = SubResource("PlaceholderTexture2D_ut102")
+
+[node name="plt_enemy" parent="." instance=ExtResource("3_vrmww")]
+position = Vector2(1313, 888)
+
+[node name="plt_enemy2" parent="." instance=ExtResource("3_vrmww")]
+position = Vector2(964, 529)
+
+[node name="plt_enemy3" parent="." instance=ExtResource("3_vrmww")]
+position = Vector2(1947, 712)
+
+[node name="Interact" parent="." instance=ExtResource("4_mhwvp")]
+position = Vector2(1204, 492)
