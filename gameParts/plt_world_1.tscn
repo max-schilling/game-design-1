@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckhou86u2f0yt"]
+[gd_scene load_steps=6 format=3 uid="uid://ckhou86u2f0yt"]
 
-[ext_resource type="Script" path="res://plt_world_1.gd" id="1_eiemv"]
-[ext_resource type="PackedScene" uid="uid://bkk356loekkiy" path="res://plt_player.tscn" id="2_665n0"]
-[ext_resource type="PackedScene" uid="uid://brbqxf55g0rhr" path="res://plt_enemy.tscn" id="3_vrmww"]
-[ext_resource type="PackedScene" uid="uid://crknutkb854bs" path="res://interact.tscn" id="4_mhwvp"]
+[ext_resource type="PackedScene" uid="uid://bkk356loekkiy" path="res://gameParts/plt_player.tscn" id="2_665n0"]
+[ext_resource type="PackedScene" uid="uid://brbqxf55g0rhr" path="res://gameParts/plt_enemy.tscn" id="3_vrmww"]
+[ext_resource type="PackedScene" uid="uid://crknutkb854bs" path="res://gameParts/interact.tscn" id="4_mhwvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsiyd"]
 size = Vector2(419.884, 12)
@@ -11,10 +10,10 @@ size = Vector2(419.884, 12)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ut102"]
 
 [node name="plt_world1" type="Node2D"]
-script = ExtResource("1_eiemv")
 
 [node name="plt_player" parent="." instance=ExtResource("2_665n0")]
 position = Vector2(1572, 530)
+script = null
 
 [node name="world" type="StaticBody2D" parent="."]
 
@@ -37,12 +36,16 @@ texture = SubResource("PlaceholderTexture2D_ut102")
 
 [node name="plt_enemy" parent="." instance=ExtResource("3_vrmww")]
 position = Vector2(1313, 888)
+script = null
 
 [node name="plt_enemy2" parent="." instance=ExtResource("3_vrmww")]
 position = Vector2(964, 529)
+script = null
 
 [node name="plt_enemy3" parent="." instance=ExtResource("3_vrmww")]
 position = Vector2(1947, 712)
+script = null
 
 [node name="Interact" parent="." instance=ExtResource("4_mhwvp")]
 position = Vector2(1204, 492)
+script = null
