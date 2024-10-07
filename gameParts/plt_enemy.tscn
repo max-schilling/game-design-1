@@ -1,12 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://brbqxf55g0rhr"]
+[gd_scene load_steps=8 format=3 uid="uid://brbqxf55g0rhr"]
 
 [ext_resource type="Script" path="res://plt_enemy.gd" id="1_1kqfo"]
 [ext_resource type="Texture2D" uid="uid://bytoqe2yuv8mm" path="res://icon.svg" id="1_ky3sc"]
+[ext_resource type="Texture2D" uid="uid://bogywwq2k8f33" path="res://assets/sprites/characters.png" id="3_kq3x5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrhry"]
-size = Vector2(12, 12)
+size = Vector2(36, 36)
 
-[node name="plt_enemy" type="RigidBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsmea"]
+atlas = ExtResource("3_kq3x5")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svs3n"]
+atlas = ExtResource("3_kq3x5")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8i6s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsmea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svs3n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="plt_jerald" type="RigidBody2D"]
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_1kqfo")
@@ -15,11 +38,18 @@ script = ExtResource("1_1kqfo")
 shape = SubResource("RectangleShape2D_lrhry")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 0.47451, 1, 1)
-scale = Vector2(0.09375, 0.09375)
+scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("1_ky3sc")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -20)
+scale = Vector2(2.3125, 2.1875)
+sprite_frames = SubResource("SpriteFrames_b8i6s")
+frame_progress = 0.870027
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

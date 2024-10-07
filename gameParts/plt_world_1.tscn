@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://g67mhtbwcpp3"]
 
-[ext_resource type="PackedScene" path="res://gameParts/plt_player.tscn" id="2_665n0"]
-[ext_resource type="PackedScene" path="res://gameParts/plt_enemy.tscn" id="3_vrmww"]
-[ext_resource type="PackedScene" path="res://gameParts/interact.tscn" id="4_mhwvp"]
+[ext_resource type="PackedScene" uid="uid://bkk356loekkiy" path="res://gameParts/plt_player.tscn" id="2_665n0"]
+[ext_resource type="PackedScene" uid="uid://brbqxf55g0rhr" path="res://gameParts/plt_enemy.tscn" id="3_vrmww"]
+[ext_resource type="PackedScene" uid="uid://crknutkb854bs" path="res://gameParts/interact.tscn" id="4_mhwvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsiyd"]
 size = Vector2(419.884, 12)

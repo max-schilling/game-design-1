@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3dh2vq1ukr6p"]
+[gd_scene load_steps=5 format=3 uid="uid://d3dh2vq1ukr6p"]
+
+[ext_resource type="PackedScene" uid="uid://bkk356loekkiy" path="res://gameParts/plt_player.tscn" id="1_33hk2"]
+[ext_resource type="PackedScene" uid="uid://brbqxf55g0rhr" path="res://gameParts/plt_enemy.tscn" id="1_nbl50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsiyd"]
 size = Vector2(419.884, 12)
@@ -6,19 +9,6 @@ size = Vector2(419.884, 12)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ut102"]
 
 [node name="plt_world1" type="Node2D"]
-
-[node name="plt_player" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(1583, 558)
-script = null
 
 [node name="world" type="StaticBody2D" parent="."]
 
@@ -39,54 +29,14 @@ position = Vector2(1395.15, 397.041)
 scale = Vector2(420.874, 16.7356)
 texture = SubResource("PlaceholderTexture2D_ut102")
 
-[node name="plt_enemy" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(1313, 888)
-script = null
+[node name="plt_player" parent="." instance=ExtResource("1_33hk2")]
+position = Vector2(1576, 596)
 
-[node name="plt_enemy2" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(964, 529)
-script = null
+[node name="plt_jerald" parent="." instance=ExtResource("1_nbl50")]
+position = Vector2(1766, 593)
 
-[node name="plt_enemy3" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(1745, 645)
-script = null
+[node name="plt_jerald2" parent="." instance=ExtResource("1_nbl50")]
+position = Vector2(978, 517)
 
-[node name="Interact" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(1204, 492)
-script = null
+[node name="plt_jerald3" parent="." instance=ExtResource("1_nbl50")]
+position = Vector2(-90, 525)
