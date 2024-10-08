@@ -117,6 +117,5 @@ zoom = Vector2(3.25, 3.25)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g5yc7")
-animation = &"jump"
-frame = 1
-frame_progress = 0.395591
+animation = &"walk"
+frame_progress = 0.742629
