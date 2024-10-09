@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3dh2vq1ukr6p"]
+[gd_scene load_steps=8 format=3 uid="uid://d3dh2vq1ukr6p"]
 
 [ext_resource type="PackedScene" uid="uid://bkk356loekkiy" path="res://gameParts/plt_player.tscn" id="1_33hk2"]
 [ext_resource type="PackedScene" uid="uid://crknutkb854bs" path="res://gameParts/interact.tscn" id="1_fonf7"]
 [ext_resource type="Script" path="res://plt_world_1.gd" id="1_jmdiu"]
 [ext_resource type="PackedScene" uid="uid://brbqxf55g0rhr" path="res://gameParts/plt_enemy.tscn" id="1_nbl50"]
+[ext_resource type="PackedScene" uid="uid://doakd3swfm4hk" path="res://gameParts/change_lvl.tscn" id="5_3uoo3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsiyd"]
 size = Vector2(419.884, 12)
@@ -13,6 +14,9 @@ size = Vector2(419.884, 12)
 [node name="plt_world1" type="Node2D"]
 script = ExtResource("1_jmdiu")
 
+[node name="Interact" parent="." instance=ExtResource("1_fonf7")]
+position = Vector2(1026, 717)
+
 [node name="world" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world"]
@@ -20,9 +24,6 @@ polygon = PackedVector2Array(-10, -1, -251, 363, -200, 629, 178, 649, 697, 622, 
 
 [node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
 polygon = PackedVector2Array(-10, -2, -251, 364, -200, 629, 176, 649, 696, 622, 1065, 554, 1254, 672, 516, 743, 546, 879, 1696, 998, 1709, 934, 1774, 946, 1787, 880, 1847, 889, 1858, 804, 1908, 814, 1913, 741, 1965, 741, 2002, 129, 1875, -182, 2118, 64, 1993, 1034, 1280, 1215, -28, 1193, -588, 1241, -640, 170)
-
-[node name="Interact" parent="world/CollisionPolygon2D" instance=ExtResource("1_fonf7")]
-position = Vector2(1133, 461)
 
 [node name="startplatform" type="StaticBody2D" parent="."]
 position = Vector2(178, 291)
@@ -47,3 +48,7 @@ position = Vector2(-90, 525)
 
 [node name="plt_player" parent="." instance=ExtResource("1_33hk2")]
 position = Vector2(1575, 592)
+
+[node name="change_lvl" parent="." instance=ExtResource("5_3uoo3")]
+position = Vector2(573, 799)
+next_level = "plt_world_2"

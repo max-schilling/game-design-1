@@ -101,7 +101,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="plt_player" type="CharacterBody2D"]
+[node name="plt_player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g4ea8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -109,13 +109,14 @@ visible = false
 scale = Vector2(0.15625, 0.234375)
 texture = ExtResource("2_mtnpj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CapsuleShape2D_ymsmj")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
 zoom = Vector2(3.25, 3.25)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 sprite_frames = SubResource("SpriteFrames_g5yc7")
 animation = &"walk"
-frame_progress = 0.742629
+frame = 2
+frame_progress = 0.347425
