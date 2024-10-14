@@ -1,9 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkk356loekkiy"]
+[gd_scene load_steps=17 format=3 uid="uid://bkk356loekkiy"]
 
 [ext_resource type="Script" path="res://plt_player.gd" id="1_g4ea8"]
 [ext_resource type="Texture2D" uid="uid://bytoqe2yuv8mm" path="res://icon.svg" id="2_mtnpj"]
 [ext_resource type="Texture2D" uid="uid://bogywwq2k8f33" path="res://assets/sprites/characters.png" id="3_1c7kj"]
-[ext_resource type="Script" path="res://pause_menu.gd" id="5_p4tod"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://dvs0k8umbu006" path="res://pause_menu.tscn" id="3_w0nnl"]
+=======
+>>>>>>> 3400717913782bf99923e85f80ba73a7fecc03c1
+=======
+>>>>>>> 3400717913782bf99923e85f80ba73a7fecc03c1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymsmj"]
 
@@ -116,8 +122,9 @@ shape = SubResource("CapsuleShape2D_ymsmj")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.25, 3.25)
 
+[node name="pause_menu" parent="Camera2D" instance=ExtResource("3_w0nnl")]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g5yc7")
 animation = &"jump"
 frame_progress = 0.0478229
-script = ExtResource("5_p4tod")

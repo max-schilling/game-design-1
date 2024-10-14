@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_resume_btn_pressed() -> void:
-	self.hide()
+	self.show()
 	get_tree().pause = false
 
 

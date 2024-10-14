@@ -51,4 +51,4 @@ position = Vector2(1575, 592)
 
 [node name="change_lvl" parent="." instance=ExtResource("5_3uoo3")]
 position = Vector2(573, 799)
-next_level = "plt_world_2"
+next_level = "gamePart /plt_world_2"
