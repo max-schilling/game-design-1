@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://eiad5e1wynq7"]
+
+[ext_resource type="Script" path="res://kill_brick.gd" id="1_84ccd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv3ah"]
+size = Vector2(1648, 150)
+
+[node name="kill_brick2" type="RigidBody2D"]
+script = ExtResource("1_84ccd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vv3ah")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
