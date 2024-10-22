@@ -22,30 +22,30 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		gravity_on = not gravity_on
-	if Input.is_action_just_pressed("ui_home"):
-		self.scale *= 2
-	if Input.is_action_just_pressed("ui-end"):
-		self.scale /= 2
-	if Input.is_action_just_pressed("ui_page_up"):
-		self.rotation_degrees += 5
-	if Input.is_action_just_pressed("ui_page_down"):
-		self.rotation_degrees -= 5
-	if Input.is_action_just_pressed("ui_text_toggle_completion_replace"):
-		self.position.x += 500
-	if Input.is_action_just_pressed("ui_text_backspace"):
-		self.position.x -= 500
-	if Input.is_action_just_pressed("ui_text_toggle_insert_mode"):
-		self.position.y += JUMP_VELOCITY / 2.0
-	if Input.is_action_just_pressed("ui_text_delete"):
-		self.position.y -= JUMP_VELOCITY / 2.0
+	#if Input.is_action_just_pressed("ui_cancel"):
+	#	gravity_on = not gravity_on
+	#if Input.is_action_just_pressed("ui_home"):
+	#	self.scale *= 2
+	#if Input.is_action_just_pressed("ui-end"):
+	#	self.scale /= 2
+	#if Input.is_action_just_pressed("ui_page_up"):
+	#	self.rotation_degrees += 5
+#	if Input.is_action_just_pressed("ui_page_down"):
+#		self.rotation_degrees -= 5
+#	if Input.is_action_just_pressed("ui_text_toggle_completion_replace"):
+#		self.position.x += 500
+#	if Input.is_action_just_pressed("ui_text_backspace"):
+#		self.position.x -= 500
+#	if Input.is_action_just_pressed("ui_text_toggle_insert_mode"):
+#		self.position.y += JUMP_VELOCITY / 2.0
+#	if Input.is_action_just_pressed("ui_text_delete"):
+#		self.position.y -= JUMP_VELOCITY / 2.0
 	if Input.is_action_just_pressed("zoom_cam_in"):
 		$Camera2D.zoom += Vector2(1, 1)
 	if Input.is_action_just_pressed("zoom_cam_out"):
 		$Camera2D.zoom -= Vector2(1, 1)
-	if Input.is_action_just_pressed("pause"):
-		$Camera2D/pause_menu.show()
+#	if Input.is_action_just_pressed("pause"):
+#		$Camera2D/pause_menu.show()
 		get_tree().paused = true
 		
 	update_animation(direction)
