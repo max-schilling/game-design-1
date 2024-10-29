@@ -16,6 +16,7 @@ script = ExtResource("1_cq4tv")
 layout_mode = 0
 offset_right = 2268.0
 offset_bottom = 864.0
+theme = ExtResource("2_jxfka")
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 0
