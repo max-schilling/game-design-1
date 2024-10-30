@@ -1,0 +1,24 @@
+extends CharacterBody2D
+
+
+const SPEED = 100.0
+var inertia = Vector2()
+var look_direct = Vector2.DOWN
+
+func _physics_process(delta: float) -> void:
+	var direction = Vector2(
+		Input.get_axis("ui_left", "ui_right"),
+		Input.get_axis("ui_up", "ui_down")
+	)
+	if direction.length() > 0:
+		look_direct = direction
+		direction = direction.normalized()
+		self.velocity = direction * SPEED
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
+	velocity += inertia
+	move_and_slide()
+	inertia = inertia.move_toward(Vector2.ZERO, delta * 1000.0)
+	if Input.is_action_just_pressed("ui_cancel"):
+		$Camera2D/pause_menu.show()
+		get_tree().paused = true

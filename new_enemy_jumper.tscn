@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjbp4s0m3m3o1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vytpu"]
+
+[node name="new_enemy_jumper" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vytpu")
