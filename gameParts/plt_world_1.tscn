@@ -10,7 +10,7 @@ size = Vector2(419.884, 12)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ut102"]
 
-[node name="plt_world1" type="Node2D"]
+[node name="plt_world_1" type="Node2D"]
 
 [node name="world" type="StaticBody2D" parent="."]
 
@@ -32,20 +32,8 @@ position = Vector2(1395.15, 397.041)
 scale = Vector2(420.874, 16.7356)
 texture = SubResource("PlaceholderTexture2D_ut102")
 
-[node name="plt_enemy" parent="." instance=ExtResource("3_vrmww")]
-position = Vector2(1313, 888)
-script = null
-
-[node name="plt_enemy2" parent="." instance=ExtResource("3_vrmww")]
-position = Vector2(964, 529)
-script = null
-
-[node name="plt_enemy3" parent="." instance=ExtResource("3_vrmww")]
-position = Vector2(1745, 645)
-script = null
-
 [node name="Interact" parent="." instance=ExtResource("4_mhwvp")]
-position = Vector2(1204, 492)
+position = Vector2(1454, 783)
 script = null
 
 [node name="plt_player" parent="." instance=ExtResource("2_665n0")]
@@ -53,3 +41,12 @@ position = Vector2(1564, 616)
 
 [node name="change_lvl" parent="." instance=ExtResource("4_f7wxa")]
 position = Vector2(604, 808)
+
+[node name="plt_jerald" parent="." instance=ExtResource("3_vrmww")]
+position = Vector2(1113, 823)
+
+[node name="plt_jerald2" parent="." instance=ExtResource("3_vrmww")]
+position = Vector2(893, 510)
+
+[node name="plt_jerald3" parent="." instance=ExtResource("3_vrmww")]
+position = Vector2(1770, 641)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5vepp67tfyee"]
+
+[ext_resource type="Script" path="res://change_lvl_2_3.gd" id="1_ven0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61sdg"]
+size = Vector2(92, 140)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1r27k"]
+
+[node name="change_lvl_2-3" type="Area2D"]
+script = ExtResource("1_ven0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_61sdg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.25, 0)
+scale = Vector2(91.5, 138)
+texture = SubResource("PlaceholderTexture2D_1r27k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

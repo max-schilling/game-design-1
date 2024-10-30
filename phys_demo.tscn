@@ -1,0 +1,135 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfs4ishc05nuu"]
+
+[ext_resource type="Script" path="res://phys_demo.gd" id="1_guitw"]
+[ext_resource type="PackedScene" uid="uid://bqccwkcxpcbr4" path="res://phys_ball.tscn" id="1_s6aq3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5xmv"]
+size = Vector2(3508, 96)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_13u8e"]
+
+[node name="phys_demo" type="Node2D"]
+position = Vector2(1117, 872)
+script = ExtResource("1_guitw")
+
+[node name="phys_ball" parent="." instance=ExtResource("1_s6aq3")]
+modulate = Color(0.360062, 0.184179, 7.21961e-08, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-696, -757)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(14, 94)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(534, 734)
+shape = SubResource("RectangleShape2D_g5xmv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1156, 365)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_g5xmv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2248, 365)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_g5xmv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(528, -956)
+shape = SubResource("RectangleShape2D_g5xmv")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(560, 735)
+scale = Vector2(3498, 80)
+texture = SubResource("PlaceholderTexture2D_13u8e")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-1146, 156)
+rotation = 1.57079
+scale = Vector2(3498, 80)
+texture = SubResource("PlaceholderTexture2D_13u8e")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(522, -955)
+rotation = 3.14159
+scale = Vector2(3498, 80)
+texture = SubResource("PlaceholderTexture2D_13u8e")
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(2252, 374)
+rotation = 4.71238
+scale = Vector2(3498, 80)
+texture = SubResource("PlaceholderTexture2D_13u8e")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -1084.0
+offset_top = -799.0
+offset_right = -742.0
+offset_bottom = -574.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "gravity:"
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 83.0
+offset_right = 58.0
+offset_bottom = 106.0
+text = "Inertia:"
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 127.0
+offset_right = 66.0
+offset_bottom = 150.0
+text = "Velocity:"
+
+[node name="gravSlider" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 7.0
+offset_right = 261.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 288.0
+offset_bottom = 88.0
+text = "apply force"
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 168.0
+offset_right = 291.0
+offset_bottom = 219.0
+text = "apply adjustments"
+
+[node name="txt_Inertia" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 90.0
+offset_right = 143.062
+offset_bottom = 121.0
+
+[node name="txt_VelX" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 126.0
+offset_right = 159.062
+offset_bottom = 157.0
+
+[node name="txt_VelY" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 129.0
+offset_right = 247.062
+offset_bottom = 160.0
+
+[connection signal="value_changed" from="Panel/gravSlider" to="." method="_on_grav_slider_value_changed"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
