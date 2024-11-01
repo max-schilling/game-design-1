@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dprv6n0j731dr"]
+
+[ext_resource type="Script" path="res://player_hud.gd" id="1_i2o2i"]
+[ext_resource type="Texture2D" uid="uid://bw0xifvvxatwb" path="res://assets/sprites/gfx/objects.png" id="2_sqodb"]
+[ext_resource type="Theme" uid="uid://duan326d8yya2" path="res://big_font.tres" id="3_em0v4"]
+
+[node name="player_hud" type="CanvasLayer" groups=["HUD"]]
+script = ExtResource("1_i2o2i")
+
+[node name="playerHealth" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_right = 1011.0
+offset_bottom = 542.0
+
+[node name="hearts" type="Sprite2D" parent="playerHealth"]
+position = Vector2(40, 44)
+scale = Vector2(4.655, 5)
+texture = ExtResource("2_sqodb")
+hframes = 33
+vframes = 20
+frame = 8
+
+[node name="money" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 106.0
+offset_right = 85.0
+offset_bottom = 195.0
+
+[node name="icon" type="Sprite2D" parent="money"]
+position = Vector2(42, 57)
+scale = Vector2(4.655, 5)
+texture = ExtResource("2_sqodb")
+hframes = 33
+vframes = 20
+frame = 132
+
+[node name="Label" type="Label" parent="money"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 29.0
+offset_right = 193.0
+offset_bottom = 99.0
+theme = ExtResource("3_em0v4")
+text = "000"

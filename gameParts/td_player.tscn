@@ -1,8 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://drk45ygl7s26y"]
+[gd_scene load_steps=50 format=3 uid="uid://drk45ygl7s26y"]
 
 [ext_resource type="Texture2D" uid="uid://bhvfsd8ia3qwn" path="res://assets/sprites/gfx/character.png" id="1_euo5o"]
 [ext_resource type="Script" path="res://gameParts/td_player.gd" id="1_jokne"]
 [ext_resource type="PackedScene" uid="uid://dvs0k8umbu006" path="res://pause_menu.tscn" id="3_6xqmk"]
+[ext_resource type="PackedScene" uid="uid://dprv6n0j731dr" path="res://gameParts/player_hud.tscn" id="4_p6mrp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyryc"]
 atlas = ExtResource("1_euo5o")
@@ -385,3 +386,6 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3kqys")
+
+[node name="player_hud" parent="." instance=ExtResource("4_p6mrp")]
+visible = false
