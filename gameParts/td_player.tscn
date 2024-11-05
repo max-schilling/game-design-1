@@ -364,19 +364,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kqys"]
-radius = 8.0
-height = 22.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_3d64a"]
+radius = 5.0
 
 [node name="td_player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_jokne")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_woous")
-animation = &"swipe_charge"
+animation = &"idle_down"
 autoplay = "idle_down"
-frame = 11
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -385,7 +382,8 @@ zoom = Vector2(5, 5)
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_3kqys")
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_3d64a")
 
 [node name="player_hud" parent="." instance=ExtResource("4_p6mrp")]
 visible = false

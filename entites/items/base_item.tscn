@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://brj4fkx68do6f"]
+
+[ext_resource type="Script" path="res://entites/items/base_item.gd" id="1_toa67"]
+[ext_resource type="Texture2D" uid="uid://bw0xifvvxatwb" path="res://assets/sprites/gfx/objects.png" id="2_wxwyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el5kh"]
+atlas = ExtResource("2_wxwyw")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72xnh"]
+atlas = ExtResource("2_wxwyw")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfu2c"]
+atlas = ExtResource("2_wxwyw")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hqx8"]
+atlas = ExtResource("2_wxwyw")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nix6"]
+atlas = ExtResource("2_wxwyw")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgwbd"]
+atlas = ExtResource("2_wxwyw")
+region = Rect2(144, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mq65"]
+atlas = ExtResource("2_wxwyw")
+region = Rect2(160, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3dxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el5kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72xnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfu2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hqx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgwbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mq65")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gplel"]
+
+[node name="BaseItem" type="Node2D"]
+script = ExtResource("1_toa67")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i3dxf")
+autoplay = "default"
+frame = 3
+frame_progress = 0.628356
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gplel")

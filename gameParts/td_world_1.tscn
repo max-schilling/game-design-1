@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://dwm7ena0g0tej"]
+[gd_scene load_steps=5 format=4 uid="uid://dwm7ena0g0tej"]
 
 [ext_resource type="TileSet" uid="uid://dgngkm31gdre7" path="res://assets/td_world_1.tres" id="1_h47xc"]
 [ext_resource type="PackedScene" uid="uid://drk45ygl7s26y" path="res://gameParts/td_player.tscn" id="2_jxc3q"]
+[ext_resource type="PackedScene" uid="uid://cro0o8gaga0qp" path="res://entites/items/mini_mart.tscn" id="3_ublib"]
+[ext_resource type="PackedScene" uid="uid://c2i4dukpb01ix" path="res://entites/items/mini_coin.tscn" id="4_3l7mo"]
 
 [node name="td_world1" type="Node2D"]
 
@@ -15,3 +17,15 @@ tile_set = ExtResource("1_h47xc")
 
 [node name="td_player" parent="." instance=ExtResource("2_jxc3q")]
 position = Vector2(-6, -187)
+
+[node name="mini_mart" parent="." instance=ExtResource("3_ublib")]
+position = Vector2(-73, -206)
+
+[node name="mini_mart2" parent="." instance=ExtResource("3_ublib")]
+position = Vector2(33, -154)
+
+[node name="mini_coin" parent="." instance=ExtResource("4_3l7mo")]
+position = Vector2(-81, -139)
+
+[node name="mini_coin2" parent="." instance=ExtResource("4_3l7mo")]
+position = Vector2(-81, -90)
