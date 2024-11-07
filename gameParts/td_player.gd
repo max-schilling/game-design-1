@@ -43,6 +43,24 @@ func attack():
 	add_child(slash)
 	anim_lock = 0.2
 
+func charge_attack():
+	data.state = STATES.ATTACKING
+	$AnimatedSprite2D.play("swipe_charge")
+	att_direct = -look_direct
+	dam_lock = 0.3
+	for i in range(9):
+		var angle = att_direct.angle() + (i-4) * PI/4
+		var dir = Vector2(cos(angle), sin(angle))
+		var slash = slash_scene.instantiate()
+		slash.position = dir * 20
+		slash.rotation = Vector2().angle_to_point(-dir)
+		slash.damage *= 1.5
+		add_child(slash)
+		await get_tree().create_timer(0.03).timeout
+	anim_lock = 0.2
+	await $AnimatedSprite2D.animation_finished
+	data.state = STATES.IDLE
+
 func _ready() -> void:
 	p_HUD.show()
 
@@ -52,6 +70,7 @@ func pickup_health(value):
 
 func pickup_money(value):
 	data.money += value
+	
 
 func _physics_process(delta: float) -> void:
 	
@@ -78,24 +97,30 @@ func _physics_process(delta: float) -> void:
 	if data.state != STATES.DEAD:
 		if Input.is_action_just_pressed("ui_accept"):
 			attack()
-			# TODO: charge timer/state
+			chrg_start = 0.0
+			data.state = STATES.CHARGING
+		chrg_start += delta
+		if Input.is_action_just_released("ui_accept"):
+			if chrg_start >= chrg_time and data.state == STATES.CHARGING:
+				charge_attack()
 	if Input.is_action_just_pressed("ui_cancel"):
 		$Camera2D/pause_menu.show()
 		get_tree().paused = true
 	pass
 
 func update_animation(direction):
-	var a_name = "idle_"
-	if look_direct.length() > 0:
-		a_name = "walk_"
-	if look_direct.x != 0:
-		a_name += "side"
-		$AnimatedSprite2D.flip_h = look_direct.x < 0
-	elif look_direct.y < 0:
-		a_name += "up"
-	elif look_direct.y > 0:
-		a_name += "down"
-	$AnimatedSprite2D.animation = a_name
-	$AnimatedSprite2D.play()
+	if data.state == STATES.IDLE:
+		var a_name = "idle_"
+		if look_direct.length() > 0:
+			a_name = "walk_"
+		if look_direct.x != 0:
+			a_name += "side"
+			$AnimatedSprite2D.flip_h = look_direct.x < 0
+		elif look_direct.y < 0:
+			a_name += "up"
+		elif look_direct.y > 0:
+			a_name += "down"
+		$AnimatedSprite2D.animation = a_name
+		$AnimatedSprite2D.play()
 	pass
 	
