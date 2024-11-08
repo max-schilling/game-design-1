@@ -108,6 +108,25 @@ func _physics_process(delta: float) -> void:
 		get_tree().paused = true
 	pass
 
+signal health_depleated
+
+func take_damage(dmg):
+	if dam_lock == 0:
+		data.health -= dmg
+		data.states = STATES.DAMAGED
+		dam_lock = 0.5
+		anim_lock = dmg * 0.005
+		#shader damage
+		if data.health < 0:
+			#dmg sound
+			pass
+		else:
+			data.state = STATES.DEAD
+			await get_tree().create_timer(0.5).timeout
+			health_depleated.emit()
+			#death anim
+	pass
+
 func update_animation(direction):
 	if data.state == STATES.IDLE:
 		var a_name = "idle_"
