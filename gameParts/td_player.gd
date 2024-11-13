@@ -127,7 +127,7 @@ func take_damage(dmg):
 			#death anim
 	pass
 
-func update_animation(direction):
+func update_animation(direct):
 	if data.state == STATES.IDLE:
 		var a_name = "idle_"
 		if look_direct.length() > 0:

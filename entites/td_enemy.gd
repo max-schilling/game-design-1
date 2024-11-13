@@ -37,6 +37,32 @@ signal recover
 @onready var rcL = $bottom_raycast
 @onready var anim_player = $AnimatedSprite2D
 
+var drops = ["drop_coin", "drop_heart"]
+var coin_scene = preload("res://entites/items/mini_coin.tscn")
+var heart_scene = preload("res://entites/items/mini_mart.tscn")
+var damage_shader = preload("res://assets/shaders/take_damage.gdshader")
+
+func vec2_offset():
+	return Vector2(randf_range(-10.0, 10.0), randf_range(-10.0, 10.0))
+
+func drop_scene(item_scene):
+	item_scene.global_position = self.global_position + vec2_offset()
+	get_tree().current_scene.add_child(item_scene)
+
+func drop_heart():
+	drop_scene(heart_scene.instantiate())
+
+func drop_coin():
+	var coin = coin_scene.instantiate()
+	coin.value = self.money_value
+	drop_scene(coin)
+
+func drop_items():
+	var num_drops = randi() % 3 + 1
+	for i in range(num_drops):
+		var rnd_drop = drops[randi() % drops.size()]
+		call_deferred(rnd_drop)
+
 func turn_to_player(location: Vector2):
 	#set state to move player
 	var dir_to_player = (location - self.global_position).normalized()
@@ -51,7 +77,22 @@ func turn_to_player(location: Vector2):
 			closest_state = STATES.values()[i]
 	AI_STATES = closest_state
 func take_damage(dmg, attacker=null):
-	# TODO
+	if damg_lock == 0.0:
+		AI_STATES = STATES.DAMAGED
+		health -= dmg
+		damg_lock = 0.2
+		anima_lock = 0.2
+		var dmg_intensity = clamp(1.0-((health+0.01)/max_h), 0.1, 0.8)
+		anima_lock = dmg * 0.005
+		if health <= 0:
+			drop_items()
+			queue_free()
+		else:
+			if attacker != null:
+				var loc = attacker.global_position
+				#await recovered
+				
+		
 	pass
 func _physics_process(delta: float) -> void:
 	anima_lock = max(anima_lock - delta, 0.0)
@@ -63,7 +104,7 @@ func _physics_process(delta: float) -> void:
 		rcR.target_position = raydir.rotated(deg_to_rad(+45)).normalized() * vision_dist
 	if anima_lock == 0.0:
 		if AI_STATES == STATES.DAMAGED:
-			# TODO RESET SHADER
+			$AnimatedSprite2D.material = null
 			AI_STATES = STATES.IDLE
 			recover.emit()
 		for player in get_tree().get_nodes_in_group("Player"):
