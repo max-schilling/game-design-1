@@ -36,12 +36,12 @@ signal recover
 @onready var rcM = $mid_rcast
 @onready var rcL = $bottom_raycast
 @onready var anim_player = $AnimatedSprite2D
-
+@onready var aud_p = $AudioStreamPlayer2D
 var drops = ["drop_coin", "drop_heart"]
 var coin_scene = preload("res://entites/items/mini_coin.tscn")
 var heart_scene = preload("res://entites/items/mini_mart.tscn")
 var damage_shader = preload("res://assets/shaders/take_damage.gdshader")
-
+var death_sound = preload("res://assets/sounds/enemy_death.wav")
 func vec2_offset():
 	return Vector2(randf_range(-10.0, 10.0), randf_range(-10.0, 10.0))
 
@@ -86,6 +86,9 @@ func take_damage(dmg, attacker=null):
 		anima_lock = dmg * 0.005
 		if health <= 0:
 			drop_items()
+			aud_p.stream = death_sound
+			aud_p.play()
+			await aud_p.finished
 			queue_free()
 		else:
 			if attacker != null:

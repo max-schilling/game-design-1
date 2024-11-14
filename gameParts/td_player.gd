@@ -22,9 +22,10 @@ var chrg_time = 2.5
 var chrg_start = 0.0
 
 var slash_scene = preload("res://entites/attacks/slash.tscn")
-
+var dam_shdr = preload("res://assets/shaders/take_damage.tres")
+var attack_sound = preload("res://assets/sounds/slash.wav")
 @onready var p_HUD = get_tree(). get_first_node_in_group("HUD")
-
+@onready var aud_p = $AudioStreamPlayer2D
 func get_direction_name():
 	return ["right", "down", "left", "up"] [
 		int(round(look_direct.angle() * 2 / PI)) % 4
@@ -41,6 +42,8 @@ func attack():
 	slash.position = att_direct * 20.0
 	slash.rotation = Vector2().angle_to_point(-att_direct)
 	add_child(slash)
+	aud_p.stream = attack_sound
+	aud_p.play()
 	anim_lock = 0.2
 
 func charge_attack():
@@ -77,6 +80,8 @@ func _physics_process(delta: float) -> void:
 	anim_lock = max(anim_lock-delta, 0.0)
 	dam_lock = max(dam_lock-delta, 0.0)
 	if anim_lock == 0 and data.state != STATES.DEAD:
+		if data.state == STATES.DAMAGED and max(dam_lock-delta, 0):
+			$AnimatedSprite2D.material = null
 		if data.state != STATES.CHARGING:
 			data.state = STATES.IDLE
 		var direction = Vector2(
@@ -116,7 +121,8 @@ func take_damage(dmg):
 		data.states = STATES.DAMAGED
 		dam_lock = 0.5
 		anim_lock = dmg * 0.005
-		#shader damage
+		$AnimatedSprite2D.material = dam_shdr.duplicate()
+		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
 		if data.health < 0:
 			#dmg sound
 			pass

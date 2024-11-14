@@ -1,20 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bs5pcg8scag51"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bs5pcg8scag51"]
 
 [ext_resource type="Shader" path="res://assets/shaders/take_damage.gdshader" id="1_lv30f"]
-
-[sub_resource type="GDScript" id="GDScript_20c7t"]
-script/source = "shader_type canvas_ item;
-
-uniform float intensity;
-
-void fragment() {
-	vec4 tex_color = texture(TEXTURE, UV);
-	vec4 red = vec4(1.0, 0.0, 0.0, 1.0);
-	COLOR.rgb = mix(tex_color.rgb, red.rgb, intensity);
-	COLOR.a = tex_color.a;
-}"
 
 [resource]
 shader = ExtResource("1_lv30f")
 shader_parameter/intensity = null
-script = SubResource("GDScript_20c7t")
