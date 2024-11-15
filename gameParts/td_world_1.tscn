@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dwm7ena0g0tej"]
+[gd_scene load_steps=9 format=4 uid="uid://dwm7ena0g0tej"]
 
 [ext_resource type="TileSet" uid="uid://dgngkm31gdre7" path="res://assets/td_world_1.tres" id="1_h47xc"]
 [ext_resource type="PackedScene" uid="uid://drk45ygl7s26y" path="res://gameParts/td_player.tscn" id="2_jxc3q"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c2i4dukpb01ix" path="res://entites/items/mini_coin.tscn" id="4_3l7mo"]
 [ext_resource type="PackedScene" uid="uid://bd78ew0i4ci26" path="res://entites/td_enemy.tscn" id="5_yw160"]
 [ext_resource type="AudioStream" uid="uid://yprpxyhx67y3" path="res://assets/sounds/overworld.mp3" id="6_vb846"]
+[ext_resource type="PackedScene" uid="uid://doakd3swfm4hk" path="res://gameParts/change_lvl.tscn" id="7_52v7j"]
+[ext_resource type="Script" path="res://gameParts/change_lvl_td.gd" id="8_f7v3i"]
 
 [node name="td_world1" type="Node2D"]
 
@@ -41,3 +43,17 @@ position = Vector2(188, -311)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_vb846")
 volume_db = -10.306
+autoplay = true
+
+[node name="change_Lvl_td" parent="." instance=ExtResource("7_52v7j")]
+position = Vector2(-156, -346)
+script = ExtResource("8_f7v3i")
+next_level = "td_world_2"
+
+[node name="CollisionShape2D" parent="change_Lvl_td" index="0"]
+position = Vector2(-96, 75)
+
+[node name="Sprite2D" parent="change_Lvl_td" index="1"]
+visible = false
+
+[editable path="change_Lvl_td"]
