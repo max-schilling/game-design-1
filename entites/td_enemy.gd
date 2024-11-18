@@ -1,47 +1,63 @@
 extends CharacterBody2D
 
-const speed = 60.0
-var max_h = 30.0
-var health = max_h
-var dam = 10.0
-var AI_STATES = STATES.IDLE
+const SPEED = 60.0
+var MAX_HEALTH = 30.0
+var HEALTH = MAX_HEALTH
+var DAMAGE = 10.0
+var AI_STATE = STATES.IDLE
 
-enum STATES { IDLE=0, UP, DOWN, LEFT, RIGHT, UP_L, UP_R, DOWN_L, DOWN_R, DAMAGED}
-var state_directs = [Vector2.ZERO, Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT, Vector2(-1,-1).normalized(), Vector2(1, -1).normalized(), Vector2(-1, 1).normalized(), Vector2(1, 1).normalized(), Vector2.ZERO]
-var state_anim = [
+enum STATES { IDLE=0, UP, DOWN, LEFT, RIGHT,
+			  UP_L, UP_R, DOWN_L, DOWN_R, DAMAGED }
+
+var state_directions = [
+	Vector2.ZERO,
+	Vector2.UP,
+	Vector2.DOWN,
+	Vector2.LEFT,
+	Vector2.RIGHT,
+	Vector2(-1, -1).normalized(),  # UL
+	Vector2(1, -1).normalized(),   # UR
+	Vector2(-1, 1).normalized(),   # DL
+	Vector2(1, 1).normalized(),    # DR
+	Vector2.ZERO,
+]
+
+var state_animations = [
 	"",
 	"walk_up",
 	"walk_down",
 	"walk_left",
 	"walk_right",
-	"walk_left",
-	"walk_right",
-	"walk_left",
-	"walk_right",
+	"walk_left",   # UL
+	"walk_right",  # UR
+	"walk_left",   # DL
+	"walk_right",  # DR
 	"",
 ]
 
 var inertia = Vector2()
-var ai_time_max = 0.5
-var ai_timer = ai_time_max - randi() % 5
-var damg_lock = 0.0
-var anima_lock = 0.0
-var kbk = 128.0
-var vision_dist = 50.0
-var money_v = 5.0
+var ai_timer_max = 0.5
+var ai_timer = ai_timer_max - randi() % 5
+var damage_lock = 0.0
+var animation_lock = 0.0
+var knockback = 128.0 * 1.25
+var vision_distance = 50.0
+var money_value = 5.0
 
-signal recover
+signal recovered
 
-@onready var rcR = $top_raycast
-@onready var rcM = $mid_rcast
-@onready var rcL = $bottom_raycast
+@onready var rcR = $RayCast2DR
+@onready var rcM = $"."/Raycast2DM
+@onready var rcL = $RayCast2DL
 @onready var anim_player = $AnimatedSprite2D
-@onready var aud_p = $AudioStreamPlayer2D
+@onready var aud_player = $AudioStreamPlayer2D
+
 var drops = ["drop_coin", "drop_heart"]
-var coin_scene = preload("res://entites/items/mini_coin.tscn")
-var heart_scene = preload("res://entites/items/mini_mart.tscn")
-var damage_shader = preload("res://assets/shaders/take_damage.gdshader")
+var coin_scene = preload("res://entites/items/mini_mart.tscn")
+var heart_scene = preload("res://entites/items/mini_coin.tscn")
+var damage_shader = preload("res://assets/shaders/take_damage.tres")
 var death_sound = preload("res://assets/sounds/enemy_death.wav")
+
 func vec2_offset():
 	return Vector2(randf_range(-10.0, 10.0), randf_range(-10.0, 10.0))
 
@@ -63,85 +79,93 @@ func drop_items():
 		var rnd_drop = drops[randi() % drops.size()]
 		call_deferred(rnd_drop)
 
-func turn_to_player(location: Vector2):
-	#set state to move player
+func turn_toward_player_location(location: Vector2):
+	# Set the state to move toward the player
 	var dir_to_player = (location - self.global_position).normalized()
-	velocity = dir_to_player * (speed * 2)
-	var closest_ang = INF
+	velocity = dir_to_player * (SPEED * 2)
+	# Determine the closest cardinal direction for animation
+	var closest_angle = INF
 	var closest_state = STATES.IDLE
 	for i in range(1, 5):
-		var state_dir = state_directs[i]
-		var ang_diff = abs(state_dir.angle_to(dir_to_player))
-		if ang_diff < closest_ang:
-			closest_ang = ang_diff
+		var state_dir = state_directions[i]
+		var angle_dif = abs(state_dir.angle_to(dir_to_player))
+		if angle_dif < closest_angle:
+			closest_angle = angle_dif
 			closest_state = STATES.values()[i]
-	AI_STATES = closest_state
+	AI_STATE = closest_state
+
 func take_damage(dmg, attacker=null):
-	if damg_lock == 0.0:
-		AI_STATES = STATES.DAMAGED
-		health -= dmg
-		damg_lock = 0.2
-		anima_lock = 0.2
-		var dmg_intensity = clamp(1.0-((health+0.01)/max_h), 0.1, 0.8)
-		anima_lock = dmg * 0.005
-		if health <= 0:
+	if damage_lock == 0.0:
+		AI_STATE = STATES.DAMAGED
+		HEALTH -= dmg
+		damage_lock = 0.2
+		animation_lock = 0.2
+		var dmg_intensity = clamp(1.0-((HEALTH+0.01)/MAX_HEALTH), 0.1, 0.8)
+		$AnimatedSprite2D.material = damage_shader.duplicate()
+		$AnimatedSprite2D.material.set_shader_parameter("intensity", dmg_intensity)
+		if HEALTH <= 0:
 			drop_items()
-			aud_p.stream = death_sound
-			aud_p.play()
-			await aud_p.finished
+			aud_player.stream = death_sound
+			aud_player.play()
+			await aud_player.finished
 			queue_free()
 		else:
 			if attacker != null:
 				var loc = attacker.global_position
-				#await recovered
-				
-		
+				await recovered
+				turn_toward_player_location(loc)
 	pass
+
 func _physics_process(delta: float) -> void:
-	anima_lock = max(anima_lock - delta, 0.0)
-	damg_lock = max(damg_lock - delta, 0.0)
-	if int(AI_STATES) >= 1 and int(AI_STATES) <= 8:
-		var raydir = state_directs[int(AI_STATES)]
-		rcM.target_position = raydir * vision_dist
-		rcL.target_position = raydir.rotated(deg_to_rad(-45)).normalized() * vision_dist
-		rcR.target_position = raydir.rotated(deg_to_rad(+45)).normalized() * vision_dist
-	if anima_lock == 0.0:
-		if AI_STATES == STATES.DAMAGED:
+	animation_lock = max(animation_lock - delta, 0.0)
+	damage_lock = max(damage_lock - delta, 0.0)
+	if int(AI_STATE) >= 1 and int(AI_STATE) <= 8:
+		var raydir = state_directions[int(AI_STATE)]
+		rcM.target_position = raydir * vision_distance
+		rcL.target_position = \
+			raydir.rotated(deg_to_rad(-45)).normalized() * vision_distance
+		rcR.target_position = \
+			raydir.rotated(deg_to_rad(+45)).normalized() * vision_distance
+	if animation_lock == 0.0:
+		if AI_STATE == STATES.DAMAGED:
 			$AnimatedSprite2D.material = null
-			AI_STATES = STATES.IDLE
-			recover.emit()
+			AI_STATE = STATES.IDLE
+			recovered.emit()
 		for player in get_tree().get_nodes_in_group("Player"):
 			if $att_box.overlaps_body(player):
-				if player.dam_lock == 0.0:
-					var inert = abs(player.global_position-self.global_position)
-					player.inertia = (inert.normalized() * Vector2(1,1) * kbk)
-					player.take_damage(STATES.DAMAGED)
+				if player.damage_lock == 0.0:
+					var inert = (player.global_position-self.global_position)
+					player.inertia = inert.normalized() * knockback
+					player.take_damage(DAMAGE)
+					$AudioStreamPlayer2D.play("res://assets/sounds/hitHurt.wav")
 				else:
 					continue
 			if player.data.state != player.STATES.DEAD:
 				if (rcM.is_colliding() and rcM.get_collider() == player) or \
-			(rcL.is_colliding() and rcL.get_collider() == player) or \
-			(rcR.is_colliding() and rcR.get_collider() == player):
-					turn_to_player(player.global_position)
-		pass
-		ai_timer = clamp(ai_timer, 0.0, ai_time_max)
+				   (rcL.is_colliding() and rcL.get_collider() == player) or \
+				   (rcR.is_colliding() and rcR.get_collider() == player):
+					turn_toward_player_location(player.global_position)
+			pass
+		
+		ai_timer = clamp(ai_timer-delta, 0.0, ai_timer_max)
 		if ai_timer == 0.0:
-			if AI_STATES == STATES.IDLE:
+			if AI_STATE == STATES.IDLE:
 				var rnd_move = randi() % 4
-				AI_STATES = STATES.values()[rnd_move+1]
+				AI_STATE = STATES.values()[rnd_move+1]
 			else:
-				AI_STATES = STATES.IDLE
-			ai_timer = ai_time_max
-		var directon = state_directs[int(AI_STATES)]
-		velocity = directon * speed
-		var anim = state_anim[int(AI_STATES)]
+				AI_STATE = STATES.IDLE
+			ai_timer = ai_timer_max
+			
+		var direction = state_directions[int(AI_STATE)]
+		velocity = direction * SPEED
+		
+		var anim = state_animations[int(AI_STATE)]
 		if anim and not anim_player.is_playing():
 			anim_player.play(anim)
-		if AI_STATES == STATES.IDLE and anim_player.is_playing():
+		if AI_STATE == STATES.IDLE and anim_player.is_playing():
 			anim_player.stop()
+		
 		velocity += inertia
 		move_and_slide()
 		inertia = inertia.move_toward(Vector2(), delta * 1000.0)
-		 
-		
 	pass

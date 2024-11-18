@@ -383,7 +383,7 @@ zoom = Vector2(5, 5)
 [node name="pause_menu" parent="Camera2D" instance=ExtResource("3_6xqmk")]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AttackBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_3d64a")
 
