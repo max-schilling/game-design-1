@@ -47,14 +47,14 @@ var money_value = 5.0
 signal recovered
 
 @onready var rcR = $RayCast2DR
-@onready var rcM = $"."/Raycast2DM
+@onready var rcM = $Raycast2DM
 @onready var rcL = $RayCast2DL
 @onready var anim_player = $AnimatedSprite2D
 @onready var aud_player = $AudioStreamPlayer2D
 
 var drops = ["drop_coin", "drop_heart"]
-var coin_scene = preload("res://entites/items/mini_mart.tscn")
-var heart_scene = preload("res://entites/items/mini_coin.tscn")
+var coin_scene = preload("res://entites/items/mini_coin.tscn")
+var heart_scene = preload("res://entites/items/mini_mart.tscn")
 var damage_shader = preload("res://assets/shaders/take_damage.tres")
 var death_sound = preload("res://assets/sounds/enemy_death.wav")
 
@@ -137,7 +137,6 @@ func _physics_process(delta: float) -> void:
 					var inert = (player.global_position-self.global_position)
 					player.inertia = inert.normalized() * knockback
 					player.take_damage(DAMAGE)
-					$AudioStreamPlayer2D.play("res://assets/sounds/hitHurt.wav")
 				else:
 					continue
 			if player.data.state != player.STATES.DEAD:

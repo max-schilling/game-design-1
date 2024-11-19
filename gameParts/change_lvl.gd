@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export var next_level = "plt_world_2" 
+@export var next_level = "plt_world_3" 
 
 
 
