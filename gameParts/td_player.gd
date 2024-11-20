@@ -45,6 +45,7 @@ func attack():
 	aud_p.stream = attack_sound
 	aud_p.play()
 	anim_lock = 0.2
+	$AnimatedSprite2D.play("idle_" + dir_name)
 
 func charge_attack():
 	data.state = STATES.ATTACKING
