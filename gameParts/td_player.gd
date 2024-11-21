@@ -45,7 +45,6 @@ func attack():
 	aud_p.stream = attack_sound
 	aud_p.play()
 	anim_lock = 0.2
-	$AnimatedSprite2D.play("idle_" + dir_name)
 
 func charge_attack():
 	data.state = STATES.ATTACKING
@@ -109,9 +108,13 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("ui_accept"):
 			if chrg_start >= chrg_time and data.state == STATES.CHARGING:
 				charge_attack()
+			else:
+				data.state == STATES.IDLE
 	if Input.is_action_just_pressed("ui_cancel"):
 		$Camera2D/pause_menu.show()
 		get_tree().paused = true
+	if data.state != STATES.ATTACKING:
+		data.state = STATES.IDLE
 	pass
 
 signal health_depleated
