@@ -51,7 +51,7 @@ script = ExtResource("8_f7v3i")
 next_level = "td_world_2"
 
 [node name="CollisionShape2D" parent="change_Lvl_td" index="0"]
-position = Vector2(-96, 75)
+position = Vector2(-120, 59)
 
 [node name="Sprite2D" parent="change_Lvl_td" index="1"]
 visible = false

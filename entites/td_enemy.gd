@@ -133,7 +133,7 @@ func _physics_process(delta: float) -> void:
 			recovered.emit()
 		for player in get_tree().get_nodes_in_group("Player"):
 			if $att_box.overlaps_body(player):
-				if player.damage_lock == 0.0:
+				if player.dam_lock == 0.0:
 					var inert = (player.global_position-self.global_position)
 					player.inertia = inert.normalized() * knockback
 					player.take_damage(DAMAGE)
