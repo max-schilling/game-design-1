@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://csjaxe70et1i0"]
+
+[ext_resource type="Script" path="res://gameParts/td_chest.gd" id="1_ktgbh"]
+[ext_resource type="Texture2D" uid="uid://bw0xifvvxatwb" path="res://assets/sprites/gfx/objects.png" id="2_t3jgh"]
+[ext_resource type="AudioStream" uid="uid://c08bevsdjj2qs" path="res://assets/sounds/enemy_death.wav" id="3_7gwbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cl6v"]
+atlas = ExtResource("2_t3jgh")
+region = Rect2(0, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t573u"]
+atlas = ExtResource("2_t3jgh")
+region = Rect2(17, 0, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xm68j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cl6v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t573u")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_arcs5"]
+radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ap0f"]
+radius = 10.0499
+
+[node name="td_chest" type="Node2D"]
+script = ExtResource("1_ktgbh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xm68j")
+autoplay = "default"
+frame_progress = 0.436575
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, -1)
+shape = SubResource("CircleShape2D_arcs5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7gwbx")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-2, -1)
+shape = SubResource("CircleShape2D_6ap0f")

@@ -128,7 +128,7 @@ func take_damage(dmg):
 		$AnimatedSprite2D.material = dam_shdr.duplicate()
 		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
 		if data.health < 0:
-			#dmg sound
+			aud_p.play()
 			pass
 		else:
 			data.state = STATES.DEAD
