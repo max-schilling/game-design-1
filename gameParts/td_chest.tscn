@@ -43,7 +43,7 @@ script = ExtResource("1_ktgbh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xm68j")
 autoplay = "default"
-frame_progress = 0.436575
+frame_progress = 0.505938
 
 [node name="Area2D" type="Area2D" parent="."]
 
