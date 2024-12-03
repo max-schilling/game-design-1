@@ -75,6 +75,12 @@ func pickup_money(value):
 	data.money += value
 	
 
+func extend_health(value):
+	data.max_health += value
+	data.max_health = clampf(data.max_health,60,MAX_OBTAINABLE_HEALTH)
+	p_HUD.draw_hearts()
+	data.health = data.max_health
+
 func _physics_process(delta: float) -> void:
 	
 	anim_lock = max(anim_lock-delta, 0.0)
@@ -129,11 +135,14 @@ func take_damage(dmg):
 		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
 		if data.health < 0:
 			aud_p.play()
+			OS.alert("You died")
+			get_tree().reload_current_scene()
 			pass
 		else:
 			data.state = STATES.DEAD
 			await get_tree().create_timer(0.5).timeout
 			health_depleated.emit()
+			
 			#death anim
 	pass
 

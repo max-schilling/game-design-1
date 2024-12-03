@@ -28,4 +28,5 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.visible = fmod(current_time, flicker_interval) < (flicker_interval / 2)
 	if current_time >= time_to_despawn:
 		remove()
-	
+	if player.extend_health().is_called:
+		var max_health = 60.0

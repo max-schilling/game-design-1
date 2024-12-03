@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blxxcs0sln6lk"]
+[gd_scene load_steps=9 format=3 uid="uid://csjaxe70et1i0"]
 
 [ext_resource type="Script" path="res://gameParts/td_chest.gd" id="1_ktgbh"]
 [ext_resource type="Texture2D" uid="uid://bw0xifvvxatwb" path="res://assets/sprites/gfx/objects.png" id="2_t3jgh"]
