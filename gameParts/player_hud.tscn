@@ -25,9 +25,9 @@ frame = 8
 [node name="money" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 106.0
+offset_top = 139.0
 offset_right = 85.0
-offset_bottom = 195.0
+offset_bottom = 228.0
 
 [node name="icon" type="Sprite2D" parent="money"]
 position = Vector2(42, 57)

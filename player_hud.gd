@@ -16,7 +16,7 @@ func create_heart():
 
 func draw_hearts():
 	for hearts in hearts.get_children():
-		hearts.remove_children(hearts)
+		hearts.remove_child(hearts)
 	for i in range(int(player.data.max_health) / 20):
 		create_heart()
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://7iu2shaovk66"]
+[gd_scene load_steps=12 format=4 uid="uid://7iu2shaovk66"]
 
 [ext_resource type="AudioStream" uid="uid://cvk3fpha6a6k2" path="res://assets/sounds/cave_td_theme.mp3" id="3_ygxid"]
 [ext_resource type="Texture2D" uid="uid://bg2y6142gjjbu" path="res://assets/sprites/gfx/cave.png" id="3_yivch"]
 [ext_resource type="PackedScene" uid="uid://drk45ygl7s26y" path="res://gameParts/td_player.tscn" id="4_82hru"]
 [ext_resource type="PackedScene" uid="uid://doakd3swfm4hk" path="res://gameParts/change_lvl.tscn" id="4_h232f"]
 [ext_resource type="Script" path="res://gameParts/change_lvl_2.gd" id="5_depb5"]
+[ext_resource type="PackedScene" uid="uid://dkd3e1ngs6u31" path="res://entites/items/td_heart_bottle.tscn" id="6_kb7t5"]
+[ext_resource type="PackedScene" uid="uid://c8h22jexpqpxr" path="res://entites/items/super_heart.tscn" id="7_yc1qr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8n634"]
 texture = ExtResource("3_yivch")
@@ -307,5 +309,26 @@ position = Vector2(166, 487)
 
 [node name="Sprite2D" parent="change_Lvl_td" index="1"]
 visible = false
+
+[node name="td_heart_bottle" parent="." instance=ExtResource("6_kb7t5")]
+position = Vector2(130, 44)
+
+[node name="td_heart_bottle2" parent="." instance=ExtResource("6_kb7t5")]
+position = Vector2(161, 76)
+
+[node name="td_heart_bottle3" parent="." instance=ExtResource("6_kb7t5")]
+position = Vector2(193, 62)
+
+[node name="super_heart" parent="." instance=ExtResource("7_yc1qr")]
+position = Vector2(-43, -35)
+
+[node name="super_heart2" parent="." instance=ExtResource("7_yc1qr")]
+position = Vector2(-12, -36)
+
+[node name="super_heart3" parent="." instance=ExtResource("7_yc1qr")]
+position = Vector2(13, -34)
+
+[node name="super_heart4" parent="." instance=ExtResource("7_yc1qr")]
+position = Vector2(41, -34)
 
 [editable path="change_Lvl_td"]
