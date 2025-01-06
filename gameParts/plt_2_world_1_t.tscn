@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bhbqyow8427b7" path="res://assets/sprites/untitled folder/twilight-tiles.png" id="1_ivk08"]
 [ext_resource type="PackedScene" uid="uid://bd60g1d2lqnt0" path="res://gameParts/plt_2_player.tscn" id="2_n5lx4"]
-[ext_resource type="AudioStream" uid="uid://vxuqx8g8t5of" path="res://assets/sounds/Jazzy_Theme.mp3" id="3_gr8ly"]
+[ext_resource type="AudioStream" uid="uid://cxmmffepn7r6v" path="res://assets/sounds/tutorial_song.mp3" id="3_24x40"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7uyar"]
 texture = ExtResource("1_ivk08")
@@ -379,7 +379,7 @@ tile_set = SubResource("TileSet_1gt5g")
 [node name="PLT2_Player" parent="." instance=ExtResource("2_n5lx4")]
 position = Vector2(48, -20)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_gr8ly")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_24x40")
 autoplay = true
 parameters/looping = true
