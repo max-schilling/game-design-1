@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bd60g1d2lqnt0"]
+[gd_scene load_steps=28 format=3 uid="uid://bd60g1d2lqnt0"]
 
 [ext_resource type="Texture2D" uid="uid://dcpx68uud420t" path="res://assets/sprites/newchar.png" id="1_2quny"]
 [ext_resource type="Script" path="res://gameParts/plt_2_player.gd" id="1_u43bt"]
+[ext_resource type="PackedScene" uid="uid://du3jrmwpdkb4r" path="res://gameParts/plt_player_hud.tscn" id="2_ugajs"]
 [ext_resource type="AudioStream" uid="uid://b3lbrdvdpkrw1" path="res://assets/sounds/random_q.wav" id="3_4qgf4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3tcp"]
@@ -191,7 +192,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PLT2_Player" type="CharacterBody2D"]
+[node name="PLT2_Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_u43bt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -200,12 +201,14 @@ shape = SubResource("CapsuleShape2D_e3tcp")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
+[node name="PLTplayer_hud" parent="Camera2D" instance=ExtResource("2_ugajs")]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.916667, 0.9375)
 sprite_frames = SubResource("SpriteFrames_5mra8")
 animation = &"airdash"
 autoplay = "idle_nm"
-frame_progress = 0.0982885
+frame_progress = 0.00735714
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4qgf4")
