@@ -1,11 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://bd60g1d2lqnt0"]
+[gd_scene load_steps=27 format=3 uid="uid://bd60g1d2lqnt0"]
 
 [ext_resource type="Texture2D" uid="uid://dcpx68uud420t" path="res://assets/sprites/newchar.png" id="1_2quny"]
 [ext_resource type="Script" path="res://gameParts/plt_2_player.gd" id="1_u43bt"]
-[ext_resource type="PackedScene" uid="uid://du3jrmwpdkb4r" path="res://gameParts/plt_player_hud.tscn" id="2_ugajs"]
 [ext_resource type="AudioStream" uid="uid://b3lbrdvdpkrw1" path="res://assets/sounds/random_q.wav" id="3_4qgf4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3tcp"]
+radius = 6.0
+height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jy0pd"]
 atlas = ExtResource("1_2quny")
@@ -201,14 +202,15 @@ shape = SubResource("CapsuleShape2D_e3tcp")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
-[node name="PLTplayer_hud" parent="Camera2D" instance=ExtResource("2_ugajs")]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.916667, 0.9375)
 sprite_frames = SubResource("SpriteFrames_5mra8")
-animation = &"airdash"
+animation = &"idle_0"
 autoplay = "idle_nm"
-frame_progress = 0.00735714
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4qgf4")
+
+[node name="coyote_time" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
