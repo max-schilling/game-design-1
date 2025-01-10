@@ -211,6 +211,5 @@ autoplay = "idle_nm"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4qgf4")
 
-[node name="coyote_time" type="Timer" parent="."]
+[node name="ghosttimer" type="Timer" parent="."]
 wait_time = 0.15
-one_shot = true

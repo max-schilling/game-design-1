@@ -5,10 +5,18 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 @onready var anim = $AnimatedSprite2D
 @onready var aud_p = $AudioStreamPlayer2D
-@onready var coy = $coyote_time
+@onready var ghosttimer = $ghosttimer
 
-var coyT = 0.1
-var can_jump = false
+func dash():
+	ghosttimer.start()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", position + velocity * 1.5, 0.45)
+	await tween.finished
+	ghosttimer.stop()
+
+func _input(event):
+	if event.is_action_just_pressed("dash"):
+		dash()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -22,11 +30,7 @@ func _physics_process(delta: float) -> void:
 		anim.play("walk_1")
 		if direction < 0:
 			$AnimatedSprite2D.flip_h
-	if is_on_floor() and can_jump == false:
-		can_jump = true
-	elif can_jump == true and $coyote_time.is_stopped():
-		$coyote_time.start(coyT)
-	if can_jump:
+		
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 	if direction:
@@ -36,8 +40,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide() 
 	update_animation(direction)
 
-func _on_coyote_time_timeout():
-	can_jump = false
 
 func update_animation(dir):
 	if not self.is_on_floor:
