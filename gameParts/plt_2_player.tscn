@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bd60g1d2lqnt0"]
+[gd_scene load_steps=30 format=3 uid="uid://bd60g1d2lqnt0"]
 
 [ext_resource type="Texture2D" uid="uid://dcpx68uud420t" path="res://assets/sprites/newchar.png" id="1_2quny"]
 [ext_resource type="Script" path="res://gameParts/plt_2_player.gd" id="1_u43bt"]
@@ -52,10 +52,6 @@ region = Rect2(240, 32, 24, 32)
 atlas = ExtResource("1_2quny")
 region = Rect2(264, 32, 24, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhsol"]
-atlas = ExtResource("1_2quny")
-region = Rect2(216, 32, 24, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_etbxd"]
 atlas = ExtResource("1_2quny")
 region = Rect2(144, 32, 24, 32)
@@ -71,6 +67,22 @@ region = Rect2(192, 32, 24, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6dh3"]
 atlas = ExtResource("1_2quny")
 region = Rect2(168, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpdmy"]
+atlas = ExtResource("1_2quny")
+region = Rect2(72, 96, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3atm"]
+atlas = ExtResource("1_2quny")
+region = Rect2(96, 96, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uebrw"]
+atlas = ExtResource("1_2quny")
+region = Rect2(120, 96, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de7qy"]
+atlas = ExtResource("1_2quny")
+region = Rect2(96, 96, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5usbj"]
 atlas = ExtResource("1_2quny")
@@ -142,9 +154,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jcqyk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhsol")
 }],
 "loop": true,
 "name": &"jump_1",
@@ -165,6 +174,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"sleeping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpdmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3atm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uebrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de7qy")
+}],
+"loop": true,
+"name": &"walk_-1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -207,6 +233,7 @@ scale = Vector2(0.916667, 0.9375)
 sprite_frames = SubResource("SpriteFrames_5mra8")
 animation = &"idle_0"
 autoplay = "idle_nm"
+frame_progress = 0.749131
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4qgf4")
