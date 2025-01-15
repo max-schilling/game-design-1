@@ -11,15 +11,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		anim.play("jump")
-		var dir := Input.get_axis("ui_left", "ui_right")
-		if dir < 0:
-			anim.flip_h
 		
 	if is_on_floor():
 		anim.play("walk_1")
-		var dir := Input.get_axis("ui_left", "ui_right")
-		if dir < 0:
-			anim.flip_h
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
