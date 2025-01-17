@@ -9,7 +9,7 @@ func _on_body_entered(body: Node2D) -> void:
 		print(aGroup)
 	
 	#if body.is_in_group("player"):
-	if body.name == "plt_2_player":
+	if body.name == "plt_2player":
 		if next_level == "":
 			OS.alert("You've run dry of levels")
 		else:

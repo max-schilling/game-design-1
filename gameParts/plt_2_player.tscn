@@ -210,7 +210,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="plt_2Player" type="CharacterBody2D"]
+[node name="plt_2Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_6deer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

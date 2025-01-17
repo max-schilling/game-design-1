@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://ceienra0qgv8f"]
+[gd_scene load_steps=6 format=4 uid="uid://ceienra0qgv8f"]
 
 [ext_resource type="Texture2D" uid="uid://bhbqyow8427b7" path="res://assets/sprites/untitled folder/twilight-tiles.png" id="1_0xiif"]
 [ext_resource type="PackedScene" uid="uid://bd60g1d2lqnt0" path="res://gameParts/plt_2_player.tscn" id="2_ych8l"]
+[ext_resource type="AudioStream" uid="uid://cuyofckeok1q7" path="res://assets/sounds/Level_Theme_2.mp3" id="3_6xkf4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xh2b5"]
 texture = ExtResource("1_0xiif")
@@ -291,3 +292,8 @@ tile_set = SubResource("TileSet_sgvw2")
 
 [node name="plt_2Player" parent="." instance=ExtResource("2_ych8l")]
 position = Vector2(29, -33)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6xkf4")
+autoplay = true
+parameters/looping = true
