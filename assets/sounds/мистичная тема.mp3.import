@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8s3matxeahrm"
+path="res://.godot/imported/мистичная тема.mp3-0eb0f4e5405ce52c1c6d4cb31a780116.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/мистичная тема.mp3"
+dest_files=["res://.godot/imported/мистичная тема.mp3-0eb0f4e5405ce52c1c6d4cb31a780116.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

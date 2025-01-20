@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://du3jrmwpdkb4r"]
+
+[ext_resource type="Texture2D" uid="uid://5yjpgreadtip" path="res://assets/sprites/Honey.png" id="1_0oopd"]
+[ext_resource type="Script" path="res://gameParts/plt_player_hud.gd" id="1_pmqef"]
+
+[node name="PLTplayer_hud" type="CanvasLayer" groups=["Hud"]]
+script = ExtResource("1_pmqef")
+
+[node name="hearts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -204.0
+offset_top = -144.0
+offset_right = 207.0
+offset_bottom = 142.0
+
+[node name="Sprite2D" type="Sprite2D" parent="hearts"]
+position = Vector2(24, 16)
+scale = Vector2(2.125, 1.875)
+texture = ExtResource("1_0oopd")

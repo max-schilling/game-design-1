@@ -22,9 +22,10 @@ var chrg_time = 2.5
 var chrg_start = 0.0
 
 var slash_scene = preload("res://entites/attacks/slash.tscn")
-
+var dam_shdr = preload("res://assets/shaders/take_damage.tres")
+var attack_sound = preload("res://assets/sounds/slash.wav")
 @onready var p_HUD = get_tree(). get_first_node_in_group("HUD")
-
+@onready var aud_p = $AudioStreamPlayer2D
 func get_direction_name():
 	return ["right", "down", "left", "up"] [
 		int(round(look_direct.angle() * 2 / PI)) % 4
@@ -41,6 +42,8 @@ func attack():
 	slash.position = att_direct * 20.0
 	slash.rotation = Vector2().angle_to_point(-att_direct)
 	add_child(slash)
+	aud_p.stream = attack_sound
+	aud_p.play()
 	anim_lock = 0.2
 
 func charge_attack():
@@ -72,11 +75,19 @@ func pickup_money(value):
 	data.money += value
 	
 
+func extend_health(value):
+	data.max_health += value
+	data.max_health = clampf(data.max_health,60,MAX_OBTAINABLE_HEALTH)
+	p_HUD.draw_hearts()
+	data.health = data.max_health
+
 func _physics_process(delta: float) -> void:
 	
 	anim_lock = max(anim_lock-delta, 0.0)
 	dam_lock = max(dam_lock-delta, 0.0)
 	if anim_lock == 0 and data.state != STATES.DEAD:
+		if data.state == STATES.DAMAGED and max(dam_lock-delta, 0):
+			$AnimatedSprite2D.material = null
 		if data.state != STATES.CHARGING:
 			data.state = STATES.IDLE
 		var direction = Vector2(
@@ -103,12 +114,39 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("ui_accept"):
 			if chrg_start >= chrg_time and data.state == STATES.CHARGING:
 				charge_attack()
+			else:
+				data.state == STATES.IDLE
 	if Input.is_action_just_pressed("ui_cancel"):
 		$Camera2D/pause_menu.show()
 		get_tree().paused = true
+	if data.state != STATES.ATTACKING:
+		data.state = STATES.IDLE
 	pass
 
-func update_animation(direction):
+signal health_depleated
+
+func take_damage(dmg):
+	if dam_lock == 0:
+		data.health -= dmg
+		data.states = STATES.DAMAGED
+		dam_lock = 0.5
+		anim_lock = dmg * 0.005
+		$AnimatedSprite2D.material = dam_shdr.duplicate()
+		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
+		if data.health < 0:
+			aud_p.play()
+			OS.alert("You died")
+			get_tree().reload_current_scene()
+			pass
+		else:
+			data.state = STATES.DEAD
+			await get_tree().create_timer(0.5).timeout
+			health_depleated.emit()
+			
+			#death anim
+	pass
+
+func update_animation(direct):
 	if data.state == STATES.IDLE:
 		var a_name = "idle_"
 		if look_direct.length() > 0:

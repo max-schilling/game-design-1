@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://briaogwgnss50"]
+
+[ext_resource type="Script" path="res://gameParts/door_hall_1.gd" id="1_wr26c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf47r"]
+size = Vector2(36, 54)
+
+[sub_resource type="Gradient" id="Gradient_73hkm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bu8qi"]
+gradient = SubResource("Gradient_73hkm")
+
+[node name="door_hall1" type="Area2D"]
+script = ExtResource("1_wr26c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(57, 0)
+shape = SubResource("RectangleShape2D_tf47r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.594317, 54.9632)
+texture = SubResource("GradientTexture1D_bu8qi")

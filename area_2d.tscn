@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3m1o60u4qcdh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsgiw"]
+size = Vector2(711, 58)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ttgn6"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(345.5, 0)
+shape = SubResource("RectangleShape2D_fsgiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(711, 60)
+texture = SubResource("PlaceholderTexture2D_ttgn6")
