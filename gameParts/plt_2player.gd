@@ -11,7 +11,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		anim.play("jump")
-		
 	if is_on_floor():
 		anim.play("walk_1")
 	# Handle jump.

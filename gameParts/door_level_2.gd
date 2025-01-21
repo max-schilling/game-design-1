@@ -4,7 +4,7 @@ extends Area2D
 @export var next_level = "plt_2_world_2" 
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_body_entered(area: Area2D) -> void:
 	var body = $CollisionShape2D
 	var groups = body.get_groups()
 	for aGroup in groups:

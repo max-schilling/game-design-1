@@ -21,3 +21,5 @@ shape = SubResource("RectangleShape2D_tf47r")
 rotation = 3.14159
 scale = Vector2(0.594317, 54.9632)
 texture = SubResource("GradientTexture1D_bu8qi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
