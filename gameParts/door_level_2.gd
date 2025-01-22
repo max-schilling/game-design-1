@@ -10,8 +10,8 @@ func _on_body_entered(area: Area2D) -> void:
 	for aGroup in groups:
 		print(aGroup)
 	
-	if body.is_in_group("player"):
-		#if body.name == "plt_2player":
+	#if body.is_in_group("player"):
+	if body.name == "plt_2player":
 		if next_level == "":
 			OS.alert("You've run dry of levels")
 		else:
