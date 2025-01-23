@@ -1,11 +1,28 @@
-[gd_scene load_steps=30 format=3 uid="uid://bd60g1d2lqnt0"]
+[gd_scene load_steps=35 format=3 uid="uid://bd60g1d2lqnt0"]
 
 [ext_resource type="Texture2D" uid="uid://dcpx68uud420t" path="res://assets/sprites/newchar.png" id="1_2quny"]
 [ext_resource type="Script" path="res://gameParts/plt_2player.gd" id="1_6deer"]
+[ext_resource type="AudioStream" uid="uid://c3jkb3u6tuoon" path="res://assets/sounds/click.wav" id="3_3mu87"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n8mmc"]
 radius = 6.0
 height = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4pob"]
+atlas = ExtResource("1_2quny")
+region = Rect2(0, 160, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqqqc"]
+atlas = ExtResource("1_2quny")
+region = Rect2(48, 160, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm5yb"]
+atlas = ExtResource("1_2quny")
+region = Rect2(96, 160, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3rky"]
+atlas = ExtResource("1_2quny")
+region = Rect2(384, 96, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gpib5"]
 atlas = ExtResource("1_2quny")
@@ -109,6 +126,23 @@ region = Rect2(96, 32, 24, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3b6gi"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4pob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqqqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm5yb")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_u3rky")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 25.0,
 "texture": SubResource("AtlasTexture_gpib5")
@@ -218,12 +252,13 @@ shape = SubResource("CapsuleShape2D_n8mmc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3b6gi")
-animation = &"jump"
+animation = &"dash"
 autoplay = "summon"
-frame = 1
-frame_progress = 0.481453
+frame = 3
+frame_progress = 0.661247
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3mu87")
