@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		pass
 	if is_on_wall():
-		velocity / 2
+		velocity.y / 2
 	if is_on_floor():
 		if velocity.x != 0:
 			anim.play("walk_1")

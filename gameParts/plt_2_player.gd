@@ -30,6 +30,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide() 
 	update_animation(direction)
 
+func hud():
+	if Input.is_action_just_pressed("pause"):
+		aud_p.play("res://assets/sounds/spy-ish_loop.wav")
+	
 
 func update_animation(dir):
 	if not self.is_on_floor:
@@ -38,6 +42,7 @@ func update_animation(dir):
 		$AnimatedSprite2D.play("idle_0")
 	if dir < 0:
 		$AnimatedSprite2D.play("walk_" + str(dir))
+		$AudioStreamPlayer2D.play("click.wav")
 	else:
 		pass
 	pass
